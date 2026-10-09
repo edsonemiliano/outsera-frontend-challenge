@@ -1,0 +1,9 @@
+.panel { border:1px solid #eee; border-radius:3px; padding:12px; min-height:600px; box-shadow:0 1px 2px #ddd; }
+.table-wrap { overflow-x:auto; }
+th { text-align:center; }
+th input,th select { display:block; margin-top:5px; font-weight:normal; }
+.pagination { display:flex; justify-content:center; align-items:center; gap:4px; padding:12px; background:#f4f4f4; }
+.pagination button { padding:4px 8px; }
+.pagination button { border:0; background:none; cursor:pointer; color:#555; }
+.pagination button:disabled { color:#bbb; cursor:default; }
+.pagination button.active { background:#007bff; color:#fff; }

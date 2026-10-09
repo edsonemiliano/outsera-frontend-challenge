@@ -1,0 +1,26 @@
+<section class="panel">
+  <h2>List movies</h2>
+  <div class="table-wrap"><table>
+    <thead><tr>
+      <th>ID</th>
+      <th>Year <input aria-label="Filter by year" type="number" placeholder="Filter by year" [(ngModel)]="year" (ngModelChange)="filter()" /></th>
+      <th>Title</th>
+      <th>Winner? <select aria-label="Filter by winner" [(ngModel)]="winner" (ngModelChange)="filter()"><option value="">Yes/No</option><option value="true">Yes</option><option value="false">No</option></select></th>
+    </tr></thead>
+    <tbody>
+      @for (movie of movies(); track movie.id) { <tr><td>{{ movie.id }}</td><td>{{ movie.year }}</td><td>{{ movie.title }}</td><td>{{ movie.winner ? 'Yes' : 'No' }}</td></tr> }
+      @empty { @if (!loading()) { <tr><td colspan="4">No movies found.</td></tr> } }
+    </tbody>
+  </table></div>
+  @if (loading()) { <p>Loading movies...</p> }
+  @if (error()) { <p role="alert">{{ error() }}</p> }
+  <div class="pagination">
+    <button (click)="goToPage(0)" [disabled]="page() === 0" aria-label="First page">«</button>
+    <button (click)="goToPage(page() - 1)" [disabled]="page() === 0" aria-label="Previous page">‹</button>
+    @for (p of pages(); track p) {
+      <button (click)="goToPage(p)" [class.active]="p === page()" [attr.aria-current]="p === page() ? 'page' : null">{{ p + 1 }}</button>
+    }
+    <button (click)="goToPage(page() + 1)" [disabled]="page() + 1 >= totalPages()" aria-label="Next page">›</button>
+    <button (click)="goToPage(totalPages() - 1)" [disabled]="page() + 1 >= totalPages()" aria-label="Last page">»</button>
+  </div>
+</section>

@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+* { box-sizing:border-box; }
+body { margin:0; font-family:Arial,Helvetica,sans-serif; color:#333; background:#fff; font-size:13px; }
+h2 { font-size:17px; margin:0 0 12px; }
+h3 { font-size:18px; font-weight:normal; margin:12px 0 6px; }
+table { width:100%; border-collapse:collapse; font-size:12px; }
+th,td { border:1px solid #d4d4d4; padding:8px 10px; text-align:left; }
+th { background:#f2f2f2; font-weight:bold; }
+input,select { border:1px solid #c7c7c7; border-radius:3px; padding:7px; font:inherit; width:100%; }
+button { background:#007bdb; border:0; border-radius:3px; color:#fff; padding:8px 12px; cursor:pointer; }
+button:disabled { opacity:.4; cursor:default; }
+[role=alert] { color:#b42318; }

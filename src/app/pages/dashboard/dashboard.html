@@ -1,0 +1,40 @@
+<div class="panels">
+  <section class="panel">
+    <h2>List years with multiple winners</h2>
+    <table><thead><tr><th>Year</th><th>Win Count</th></tr></thead><tbody>
+      @for (item of years(); track item.year) { <tr><td>{{ item.year }}</td><td>{{ item.winnerCount }}</td></tr> }
+    </tbody></table>
+    @if (yearsError()) { <p role="alert">{{ yearsError() }}</p> }
+  </section>
+  <section class="panel">
+    <h2>Top 3 studios with winners</h2>
+    <table><thead><tr><th>Name</th><th>Win Count</th></tr></thead><tbody>
+      @for (item of studios(); track item.name) { <tr><td>{{ item.name }}</td><td>{{ item.winCount }}</td></tr> }
+    </tbody></table>
+    @if (studiosError()) { <p role="alert">{{ studiosError() }}</p> }
+  </section>
+  <section class="panel">
+    <h2>Producers with longest and shortest interval between wins</h2>
+    <h3>Maximum</h3>
+    <table><thead><tr><th>Producer</th><th>Interval</th><th>Previous Year</th><th>Following Year</th></tr></thead><tbody>
+      @for (item of intervals().max; track $index) { <tr><td>{{ item.producer }}</td><td>{{ item.interval }}</td><td>{{ item.previousWin }}</td><td>{{ item.followingWin }}</td></tr> }
+    </tbody></table>
+    <h3>Minimum</h3>
+    <table><thead><tr><th>Producer</th><th>Interval</th><th>Previous Year</th><th>Following Year</th></tr></thead><tbody>
+      @for (item of intervals().min; track $index) { <tr><td>{{ item.producer }}</td><td>{{ item.interval }}</td><td>{{ item.previousWin }}</td><td>{{ item.followingWin }}</td></tr> }
+    </tbody></table>
+    @if (intervalsError()) { <p role="alert">{{ intervalsError() }}</p> }
+  </section>
+  <section class="panel">
+    <h2>List movie winners by year</h2>
+    <form (ngSubmit)="search()" class="search">
+      <input aria-label="Search by year" name="year" type="number" min="1900" max="2100" placeholder="Search by year" [(ngModel)]="year" />
+      <button type="submit" aria-label="Search">&#9906;</button>
+    </form>
+    @if (searchError()) { <p role="alert">{{ searchError() }}</p> }
+    <table><thead><tr><th>Id</th><th>Year</th><th>Title</th></tr></thead><tbody>
+      @for (movie of winners(); track movie.id) { <tr><td>{{ movie.id }}</td><td>{{ movie.year }}</td><td>{{ movie.title }}</td></tr> }
+    </tbody></table>
+    @if (searched() && !winners().length && !searchError()) { <p>No winners found.</p> }
+  </section>
+</div>

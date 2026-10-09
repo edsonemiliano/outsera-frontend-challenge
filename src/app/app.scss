@@ -1,0 +1,7 @@
+header { background:#32393f; color:#fff; padding:15px 24px; font-size:16px; }
+.layout { display:grid; grid-template-columns:240px minmax(0,1fr); min-height:calc(100vh - 49px); }
+nav { background:#f7f8f9; padding:16px 12px; display:flex; flex-direction:column; gap:5px; }
+nav a { color:#777; text-decoration:none; font-size:13px; }
+nav a.active,nav a:hover { color:#007bdb; }
+main { padding:12px 20px; min-width:0; }
+@media(max-width:800px) { .layout { grid-template-columns:150px minmax(0,1fr); } main { padding:12px; } }
